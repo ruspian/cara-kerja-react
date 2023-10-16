@@ -2,19 +2,16 @@ import { useState } from "react";
 
 const content = [
   {
-    summary: "Pendidikan Berkualitas",
-    details:
-      "Mendapatkan pendidikan yang baik dan relevan dengan minat dan tujuan karir Anda adalah langkah pertama menuju sukses. Ini membantu membangun fondasi pengetahuan dan keterampilan yang diperlukan.",
+    title: "Pendidikan Berkualitas",
+    body: "Mendapatkan pendidikan yang baik dan relevan dengan minat dan tujuan karir Anda adalah langkah pertama menuju sukses. Ini membantu membangun fondasi pengetahuan dan keterampilan yang diperlukan.",
   },
   {
-    summary: "Kerja Keras dan Konsistensi",
-    details:
-      "Kerja keras, dedikasi, dan konsistensi adalah kunci untuk mencapai tujuan. Tetap fokus pada upaya Anda, terus belajar, dan tidak mudah menyerah adalah bagian penting dari perjalanan menuju sukses.",
+    title: "Kerja Keras dan Konsistensi",
+    body: "Kerja keras, dedikasi, dan konsistensi adalah kunci untuk mencapai tujuan. Tetap fokus pada upaya Anda, terus belajar, dan tidak mudah menyerah adalah bagian penting dari perjalanan menuju sukses.",
   },
   {
-    summary: "Networking dan Kolaborasi",
-    details:
-      "Membangun hubungan dengan orang lain di bidang Anda, belajar dari mereka, dan bekerja sama dalam proyek-proyek yang relevan dapat membuka pintu untuk peluang baru dan memperluas jaringan profesional Anda.",
+    title: "Networking dan Kolaborasi",
+    body: "Membangun hubungan dengan orang lain di bidang Anda, belajar dari mereka, dan bekerja sama dalam proyek-proyek yang relevan dapat membuka pintu untuk peluang baru dan memperluas jaringan profesional Anda.",
   },
 ];
 
@@ -41,7 +38,7 @@ function Tabbed({ content }) {
       {activeTab <= 2 ? (
         <TabContent item={content.at(activeTab)} />
       ) : (
-        <DifferentContent />
+        <AnotherTabContent />
       )}
     </div>
   );
@@ -68,12 +65,12 @@ function TabContent({ item }) {
 
   return (
     <div className="tab-content">
-      <h4>{item.summary}</h4>
-      {showDetails && <p>{item.details}</p>}
+      <h4>{item.title}</h4>
+      {showDetails && <p>{item.body}</p>}
 
       <div className="tab-actions">
         <button onClick={() => setShowDetails((h) => !h)}>
-          {showDetails ? "Hide" : "Show"} details
+          {showDetails ? "Sembunyikan" : "Tampilkan"} Isi
         </button>
 
         <div className="hearts-counter">
@@ -91,7 +88,7 @@ function TabContent({ item }) {
   );
 }
 
-function DifferentContent() {
+function AnotherTabContent() {
   return (
     <div className="tab-content">
       <h4>Saya adalah tab yg berbeda, jadi data pada State akan hilang 💣</h4>
