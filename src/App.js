@@ -63,6 +63,27 @@ function TabContent({ item }) {
     setLikes(likes + 1);
   }
 
+  function handleUndo() {
+    setShowDetails(true)
+    setLikes(0)
+  }
+
+  function handleUndoLater() {
+    setTimeout(handleUndo, 2000)
+  }
+
+  function handleLike() {
+    // dalam react tidak bisa menggunakam cara seperti ini menambahkan 1/1 kalau mau langsung tambah 3
+    // setLikes(likes + 1)
+    // setLikes(likes + 1)
+    // setLikes(likes + 1)
+
+    // kalau ingin menambahkan 1/1 gunakan arrow function dengan callback function
+    setLikes((likes) => likes + 1);
+    setLikes((likes) => likes + 1);
+    setLikes((likes) => likes + 1);
+  }
+
   return (
     <div className="tab-content">
       <h4>{item.title}</h4>
@@ -76,13 +97,13 @@ function TabContent({ item }) {
         <div className="hearts-counter">
           <span>{likes} 👍</span>
           <button onClick={handleInc}>+1</button>
-          <button>+3</button>
+          <button onClick={handleLike}>+3</button>
         </div>
       </div>
 
       <div className="tab-undo">
-        <button>Batal</button>
-        <button>Batal dalam 2d</button>
+        <button onClick={handleUndo}>Batal</button>
+        <button onClick={handleUndoLater}>Batal dalam 2d</button>
       </div>
     </div>
   );
